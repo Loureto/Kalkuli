@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 
-interface TanStackQueryProps {
+type TanStackQueryProps = {
   children: React.ReactNode;
-}
+};
 
 export const TanStackQueryProvider = ({ children }: TanStackQueryProps) => {
   const queryClient = new QueryClient();
