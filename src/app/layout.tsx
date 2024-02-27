@@ -1,7 +1,7 @@
+import { TanStackQueryProvider } from "@/providers";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { NextThemeProvider, TanStackQueryProvider } from "@/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +18,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className} suppressHydrationWarning>
-        <TanStackQueryProvider>
-          <NextThemeProvider>{children}</NextThemeProvider>
-        </TanStackQueryProvider>
+        <TanStackQueryProvider>{children}</TanStackQueryProvider>
       </body>
     </html>
   );
