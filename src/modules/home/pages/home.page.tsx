@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@nextui-org/react";
+import { Button } from "@/components";
 import Link from "next/link";
 
 export const HomePage = () => {
