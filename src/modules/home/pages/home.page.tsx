@@ -13,23 +13,25 @@ export const HomePage = () => {
     <main className="w-full h-screen flex flex-col justify-center items-center bg-gradient-to-br from-40% from-custom-accentGreen to-custom-lightYellow">
       <Image className="mb-24" src={LogoIcon} alt="Kalkuli" />
 
-      <section className="flex flex-col max-w-80 items-center gap-6">
-        <p className="text-base leading-[27px] text-center font-medium text-custom-brightGreen">
+      <section className="flex flex-col sm:max-w-80 xl:max-w-96 items-center gap-6">
+        <p className="text-base leading-7 text-center font-medium text-gray-100">
           Seja bem-vindo a inteligência especialista em contabilidade.
         </p>
 
         <Button
-          className="text-[#5BC046] bg-white w-full text-medium"
+          fullWidth
+          size="lg"
+          color="secondary"
           onClick={handleClickNavigateToLogin}
         >
-          Entrar
+          Ir para login
         </Button>
 
         <Link
           href={routes.createAccount}
-          className="text-white w-fit text-sm font-medium"
+          className="text-white w-fit text-sm font-medium underline"
         >
-          Cadastrar
+          Cadastra-se
         </Link>
       </section>
     </main>
