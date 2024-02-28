@@ -1,5 +1,5 @@
-import { routes } from "@/constants";
 import { useRouter } from "next/navigation";
+import { routes } from "@/shared";
 
 export const useHome = () => {
   const router = useRouter();

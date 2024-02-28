@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Link } from "@nextui-org/react";
 import { Button } from "@/components";
-import { routes } from "@/constants";
+import { routes } from "@/shared";
 import LogoIcon from "@/public/icons/logo.svg";
 import { useHome } from "../hooks";
 
