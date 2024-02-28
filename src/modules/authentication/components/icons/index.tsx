@@ -3,7 +3,7 @@
 import { MdEmail, MdLock } from "react-icons/md";
 
 const styles = {
-  icon_default: "text-gray-500 pointer-events-none",
+  icon_default: "w-5 h-5 text-gray-500 pointer-events-none",
 };
 
 export const Icons = {
