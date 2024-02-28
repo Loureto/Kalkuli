@@ -8,7 +8,7 @@ import LogoIcon from "@/public/icons/logo.svg";
 import { useHome } from "../hooks";
 
 export const HomePage = () => {
-  const { handleClickNavitgate } = useHome();
+  const { handleClickNavigateToLogin } = useHome();
   return (
     <main className="w-full h-screen flex flex-col justify-center items-center bg-gradient-to-br from-40% from-custom-accentGreen to-custom-lightYellow">
       <Image className="mb-24" src={LogoIcon} alt="Kalkuli" />
@@ -20,7 +20,7 @@ export const HomePage = () => {
 
         <Button
           className="text-[#5BC046] bg-white w-full text-medium"
-          onClick={handleClickNavitgate}
+          onClick={handleClickNavigateToLogin}
         >
           Entrar
         </Button>
