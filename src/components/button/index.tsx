@@ -1,44 +1,10 @@
-import { forwardRef } from "react";
-import { useButton, Ripple, Spinner, ButtonProps } from "@nextui-org/react";
-import clsx from "clsx";
+import { Button, extendVariants } from "@nextui-org/react";
 
-export const MyButton = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      domRef,
-      children,
-      spinnerSize,
-      spinner = <Spinner color="current" size={spinnerSize} />,
-      spinnerPlacement,
-      startContent,
-      endContent,
-      isLoading,
-      disableRipple,
-      styles,
-      getButtonProps,
-      getRippleProps,
-    } = useButton({
-      ref,
-      ...props,
-    });
-
-    const { ripples } = getRippleProps();
-
-    return (
-      <button
-        ref={domRef}
-        className={clsx(styles, props.className)}
-        {...getButtonProps()}
-      >
-        {startContent}
-        {isLoading && spinnerPlacement === "start" && spinner}
-        {children}
-        {isLoading && spinnerPlacement === "end" && spinner}
-        {endContent}
-        {!disableRipple && <Ripple {...getRippleProps()} ripples={ripples} />}
-      </button>
-    );
-  }
-);
-
-MyButton.displayName = "MyButton";
+export const ButtonCustom = extendVariants(Button, {
+  variants: {
+    color: {
+      primary: "bg-custom-accentGreen text-white",
+      secondary: "bg-white text-custom-accentGreen",
+    },
+  },
+});
