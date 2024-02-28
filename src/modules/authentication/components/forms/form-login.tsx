@@ -1,40 +1,51 @@
 "use client";
 
-import { Button } from "@/components";
-import { Input, Link } from "@nextui-org/react";
 import { useState } from "react";
 import { ButtonEye, Icons } from "..";
+import { Link } from "@nextui-org/react";
+import { Button, Input } from "@/components";
 
 export const FormLogin = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   return (
-    <form className="flex flex-col gap-5">
+    <form className="flex flex-col gap-4">
       <Input
         type="email"
-        size="sm"
+        size="md"
         placeholder="E-mail"
         variant="bordered"
-        isInvalid={true}
+        // isInvalid={true}
         startContent={<Icons.MdEmail />}
-        // errorMessage="Error message"
       />
-      <Input
-        type={isVisible ? "text" : "password"}
-        size="sm"
-        placeholder="Senha"
-        variant="bordered"
-        isInvalid={true}
-        startContent={<Icons.MdLock />}
-        endContent={
-          <ButtonEye
-            isVisible={isVisible}
-            handleClick={() => setIsVisible(!isVisible)}
-          />
-        }
-        // errorMessage="Error message"
-      />
-      <Link className="text-center">Esqueceu a senha?</Link>
-      <Button type="submit">Entrar</Button>
+      <div className="w-full flex flex-col gap-1">
+        <Link className="w-fit text-custom-dark underline ml-auto cursor-pointer">
+          Esqueceu a senha?
+        </Link>
+        <Input
+          type={isVisible ? "text" : "password"}
+          size="md"
+          placeholder="Senha"
+          variant="bordered"
+          // isInvalid={true}
+          startContent={<Icons.MdLock />}
+          endContent={
+            <ButtonEye
+              isVisible={isVisible}
+              handleClick={() => setIsVisible(!isVisible)}
+            />
+          }
+        />
+      </div>
+
+      <Button
+        type="submit"
+        size="lg"
+        className="mt-4"
+        color="primary"
+        isDisabled
+      >
+        Entrar
+      </Button>
     </form>
   );
 };
