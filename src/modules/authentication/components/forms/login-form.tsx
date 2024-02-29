@@ -2,26 +2,35 @@
 
 import { Button, Input } from "@/components";
 import { Link } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller } from "react-hook-form";
 import { ButtonEye, Icons } from "..";
+import { LoginFormType } from "../../shared";
 
-interface IFormLogin {
+interface ILoginForm {
   control: any;
-  handleSubmit: any;
   formState: any;
+  reset(): any;
+  handleSubmit(data: any): React.Dispatch<React.SetStateAction<any>>;
+  handleClick(data: LoginFormType): void;
 }
 
-export const FormLogin = ({
+export const LoginForm = ({
   control,
+  reset,
+  handleClick,
   handleSubmit,
   formState: { errors },
-}: IFormLogin) => {
+}: ILoginForm) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    return () => reset();
+  }, [reset]);
 
   return (
     <form
-      onSubmit={handleSubmit((data: any) => console.log([data]))}
+      onSubmit={handleSubmit((data: LoginFormType) => handleClick(data))}
       className="flex flex-col gap-4"
     >
       <Controller
@@ -35,6 +44,7 @@ export const FormLogin = ({
             variant="bordered"
             isInvalid={!!error?.message}
             startContent={<Icons.MdEmail />}
+            errorMessage={error?.message}
             {...rest}
           />
         )}
@@ -62,6 +72,7 @@ export const FormLogin = ({
                     handleClick={() => setIsVisible(!isVisible)}
                   />
                 }
+                errorMessage={error?.message}
                 {...rest}
               />
             );

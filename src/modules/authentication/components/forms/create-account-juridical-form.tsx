@@ -4,37 +4,39 @@ import { Controller } from "react-hook-form";
 
 import { Button, Input } from "@/components";
 import {
-  CreateAccountType,
-  createAccountFields,
-  validationFields,
+  CreateAccountJuridicalType,
+  createAccountJuridicalFields,
+  validationJuridicalFields,
 } from "../../shared";
 import { useEffect } from "react";
 
-interface ICreateAccountForm {
+interface IFormCreateAccountJuridical {
   control: any;
   formState: any;
   reset(): any;
   handleSubmit(data: any): React.Dispatch<React.SetStateAction<any>>;
-  handleClick(data: CreateAccountType): void;
+  handleClick(data: CreateAccountJuridicalType): void;
 }
 
-export const CreateAccountForm = ({
+export const CreateAccountJuridicalForm = ({
   control,
   handleClick,
   handleSubmit,
   reset,
   formState: { errors },
-}: ICreateAccountForm) => {
+}: IFormCreateAccountJuridical) => {
   useEffect(() => {
     return () => reset();
   }, [reset]);
 
   return (
     <form
-      onSubmit={handleSubmit((data: CreateAccountType) => handleClick(data))}
+      onSubmit={handleSubmit((data: CreateAccountJuridicalType) =>
+        handleClick(data)
+      )}
       className="flex flex-col gap-4 mt-9"
     >
-      {createAccountFields.map((field) => (
+      {createAccountJuridicalFields.map((field) => (
         <Controller
           key={field.id}
           control={control}
@@ -58,7 +60,7 @@ export const CreateAccountForm = ({
         size="lg"
         className="mt-4"
         color="primary"
-        isDisabled={validationFields(errors)}
+        isDisabled={validationJuridicalFields(errors)}
       >
         Cadastrar
       </Button>
