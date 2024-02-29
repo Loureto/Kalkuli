@@ -1,41 +1,18 @@
 "use client";
 
 import { routes } from "@/shared";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "@nextui-org/react";
-import { useForm } from "react-hook-form";
-import { FormLogin } from "../components";
-import { FormLoginData, formLoginSchema } from "../shared";
-
-export const Container = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <main className="flex flex-col w-full sm:max-w-80 xl:max-w-96">
-      {children}
-    </main>
-  );
-};
+import { Container, LoginForm } from "../components";
+import { useLogin } from "../hooks";
 
 export const LoginPage = () => {
-  const { control, handleSubmit, formState } = useForm<FormLoginData>({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-    mode: "onBlur",
-    resolver: zodResolver(formLoginSchema),
-  });
-
   return (
     <Container>
       <h1 className="text-3xl font-bold mb-10 text-center">
         Bem-vindo de volta
       </h1>
 
-      <FormLogin
-        control={control}
-        formState={formState}
-        handleSubmit={handleSubmit}
-      />
+      <LoginForm {...useLogin()} />
 
       <p className="text-center mt-5">
         Ainda não tenho conta?{" "}
