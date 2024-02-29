@@ -20,9 +20,9 @@ const WithAuthLayout = ({ children }: { children: React.ReactNode }) => {
 
   if (!isAuthenticated && router !== routes.home) {
     return (
-      <div className="w-full h-screen flex flex-col items-center">
+      <div className="w-full h-full flex flex-col sm:h-screen">
         <Header />
-        <main className="w-full h-full flex justify-center items-center px-5 sm:px-0">
+        <main className="w-full h-full flex flex-col justify-center items-center px-5 sm:px-0">
           {children}
         </main>
       </div>
