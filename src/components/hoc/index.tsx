@@ -6,6 +6,7 @@ import { Header } from "..";
 
 import { routes } from "@/shared";
 import { usePathname } from "next/navigation";
+import { Example } from "../sidebar";
 
 const WithAuthLayout = ({ children }: { children: React.ReactNode }) => {
   const token = Cookies.get("token");
@@ -29,11 +30,7 @@ const WithAuthLayout = ({ children }: { children: React.ReactNode }) => {
     );
   }
 
-  return (
-    <main>
-      <div>{children}</div>
-    </main>
-  );
+  return <Example />;
 };
 
 export default WithAuthLayout;
