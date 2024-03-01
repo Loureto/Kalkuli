@@ -3,9 +3,10 @@
 import Image from "next/image";
 import KalkuliIcon from "@/public/icons/kalkuli-medium.svg";
 import { Button } from "..";
-import { ButtonActionSidebar } from "../sidebar/items";
+
 import { Bars3Icon, PlusIcon } from "@heroicons/react/20/solid";
 import { useSidebarStore } from "@/shared";
+import { ButtonActionSidebar } from "../button-add-new-chat/inde";
 
 const HeaderInitial = () => {
   return (

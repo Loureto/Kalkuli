@@ -2,7 +2,8 @@ import Image from "next/image";
 
 import { PlusIcon } from "@heroicons/react/20/solid";
 import Logo from "@/public/icons/logo.svg";
-import { ListOfItems, PerfilSidebar } from "./items";
+import { ListOfItems } from "../list-of-items";
+import { PerfilSidebar } from "../perfil";
 
 export const SiderbarDesktop = () => {
   return (
