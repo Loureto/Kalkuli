@@ -31,16 +31,14 @@ const WithAuthLayout = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <div>
+    <div className="w-full flex flex-col min-h-screen">
       <Sidebar.Mobile />
 
       <Sidebar.Desktop />
 
-      <div className="lg:pl-72">
+      <div className="relative h-screen flex flex-col lg:pl-72">
         <Header.Desktop />
-        <main className="py-10">
-          <div className="px-4 sm:px-6 lg:px-8">{children}</div>
-        </main>
+        <main className="relative flex-1 pt-5 h-full">{children}</main>
       </div>
     </div>
   );
