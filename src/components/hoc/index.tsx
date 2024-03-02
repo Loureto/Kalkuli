@@ -19,7 +19,17 @@ const WithAuthLayout = ({ children }: { children: React.ReactNode }) => {
     }
   }, [token]);
 
-  if (!isAuthenticated && router !== routes.home) {
+  if (!isAuthenticated && routes.home === router) {
+    return (
+      <div className="w-full h-full flex flex-col sm:h-screen">
+        <main className="w-full h-full flex flex-col justify-center items-center px-5 sm:px-0">
+          {children}
+        </main>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
     return (
       <div className="w-full h-full flex flex-col sm:h-screen">
         <Header.Initial />

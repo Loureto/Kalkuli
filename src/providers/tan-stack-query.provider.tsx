@@ -10,7 +10,7 @@ type TanStackQueryProps = {
 export const TanStackQueryProvider = ({ children }: TanStackQueryProps) => {
   const queryClient = new QueryClient();
 
-  Cookies.set("token", "token");
+  // Cookies.set("token", "token");
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
