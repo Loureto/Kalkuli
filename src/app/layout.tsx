@@ -1,8 +1,8 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { NextThemeProvider, TanStackQueryProvider } from "@/providers";
-import { Inter } from "next/font/google";
 import WithAuthLayout from "@/components/hoc";
+import { NextThemeProvider, TanStackQueryProvider } from "@/providers";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
