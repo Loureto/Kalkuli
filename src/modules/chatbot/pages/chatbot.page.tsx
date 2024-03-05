@@ -1,8 +1,13 @@
 "use client";
 
 import { Input } from "@/components";
+import { MemoizedReactMarkdown } from "@/components/markdown";
 import { useChat } from "ai/react";
 import { MdSend } from "react-icons/md";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import rehypeRaw from "rehype-raw";
 export const ChatbotPage = () => {
   const user = "user";
 
@@ -24,15 +29,6 @@ export const ChatbotPage = () => {
     }
   );
 
-  const array = messages?.[0]?.content;
-  console.log(
-    messages.map((message) => {
-      if (message.role.toLowerCase() === "assistant") {
-        return JSON.parse(message.content);
-      }
-    })
-  );
-
   return (
     <div className="flex flex-col items-center h-full pb-10">
       {error && <p className="text-red-500">{error.message}</p>}
@@ -42,13 +38,53 @@ export const ChatbotPage = () => {
         {messages?.map((message, index) => {
           if (message.role.toLowerCase() === "assistant") {
             const parseJSON = JSON.parse(message.content);
-
+            const markdown = parseJSON.choices[0].message.content;
             return (
               <div key={index}>
-                <p>
-                  {"Kalkuli: "}
-                  {parseJSON.choices[0].message.content}
-                </p>
+                <MemoizedReactMarkdown
+                  components={{
+                    p({ children }) {
+                      return <p className="my-4 last:mb-0">{children}</p>;
+                    },
+
+                    table({ children }) {
+                      return (
+                        <table className="table-auto divide-y divide-gray-300">
+                          {children}
+                        </table>
+                      );
+                    },
+
+                    th({ children }) {
+                      return (
+                        <th
+                          scope="col"
+                          className="py-3 pl-4 pr-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-0"
+                        >
+                          {children}
+                        </th>
+                      );
+                    },
+                    td({ children }) {
+                      return (
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                          {children}
+                        </td>
+                      );
+                    },
+                    tbody({ children }) {
+                      return (
+                        <tbody className="divide-y divide-gray-200 bg-white">
+                          {children}
+                        </tbody>
+                      );
+                    },
+                  }}
+                  remarkPlugins={[remarkGfm, remarkMath]}
+                  rehypePlugins={[rehypeKatex, rehypeRaw]}
+                >
+                  {"Kalkuli: " + markdown.toString()}
+                </MemoizedReactMarkdown>
               </div>
             );
           }
@@ -77,7 +113,7 @@ export const ChatbotPage = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="flex w-full justify-center items-center"
+        className="sticky bottom-0 flex w-full justify-center items-center"
       >
         <Input
           value={input}
